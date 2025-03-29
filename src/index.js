@@ -1,6 +1,6 @@
 // import { add } from "lodash";
-import { add } from "lodash-es"
-// import { add } from "@/utils";
+// import { add } from "lodash-es"
+import { add } from "@/utils";
 const root = document.getElementById("root");
 const element = document.createElement("button");
 let count = 0;

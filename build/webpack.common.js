@@ -34,7 +34,25 @@ module.exports = {
         use: [
           "style-loader", // 将 CSS 插入到 DOM 中
           "css-loader", // 解析 CSS 文件
-          // "postcss-loader", // 添加浏览器前缀
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [
+                  [
+                    "postcss-preset-env",
+                    {
+                      stage: 0, // 使用最新的 CSS 特性
+                      autoprefixer: true, // 自动添加浏览器前缀
+                      // features: {
+                      //   "nesting-rules": true, // 支持嵌套规则
+                      // },
+                    },
+                  ],
+                ],
+              },
+            },
+          },
         ],
       },
       {

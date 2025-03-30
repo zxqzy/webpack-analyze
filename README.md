@@ -16,3 +16,10 @@
     - webpack 魔法注释可以为静态分析提供场景，如打包成多语言包：'./locale/${language}'
     - 魔法注释可以配置预加载和预读取，区别为提前加载关键资源与空闲加载下一页的资源，preload & prefetch
     - 若设置了模块没有副作用，副作用的代码会被 tree-shaking 掉
+10. webpack 解析图片资源可以使用 file-loader & url-loader 或者内置的 asset
+    - file-loader: 将文件输出到指定目录并且返回文件路径
+    - url-loader: 在 file-loader 的基础上增加了文件转 base64 的功能
+    - asset: webpack5 新增的资源模块语法
+        - asset/resource: file-loader
+        - asset/inline: 把资源转成 base64 路径
+        - asset: 大文件 file-loader, 小文件可以转 base-64

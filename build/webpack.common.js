@@ -29,6 +29,37 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.(png|jpe?g|gif|svg|webp)$/,
+       use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 8 * 1024, // 小于 8kb 的图片转为 base64 格式，大于 8kb 的图片使用 file-loader 转为文件格式
+              name: "[name].[hash:8][ext]", // 图片输出路径
+              outputPath: "assets/images", // 图片输出路径
+              // esModule: false, // 使用 CommonJS 模块语法，解决图片路径问题
+            },
+          },
+          // {
+          //   loader: "image-webpack-loader",
+          //   options: {
+          //     webp: {
+          //       quality: 75,
+          //     },
+          //   },
+          // }, // 待验证
+        ],
+        // type: "asset",
+        // generator: {
+        //   filename: "assets/images/[name].[hash:8][ext]", // 图片输出路径
+        // },
+        // parser: {
+        //   dataUrlCondition: {
+        //     maxSize: 8 * 1024, // 小于 8kb 的图片转为 base64 格式
+        //   },
+        // },
+      },
     ],
   },
   plugins: [

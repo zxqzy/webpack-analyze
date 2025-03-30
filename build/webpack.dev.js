@@ -1,5 +1,6 @@
 const common = require("./webpack.common");
 const { merge } = require("webpack-merge");
+const path = require("path");
 // const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = merge(common, {
@@ -17,5 +18,15 @@ module.exports = merge(common, {
     //   },
     //   extractComments: false, // 是否提取版权信息
     // })],
+  },
+  devServer: {
+    static: path.join(__dirname, "../dist"), // 静态文件目录
+    port: 3000,
+    hot: true,
+    // open: true, // 自动打开浏览器
+    historyApiFallback: true, // 支持 history 模式的路由，解决刷新页面 404 的问题
+    // devMiddleware: {
+    //   writeToDisk: true, // 允许写入到磁盘
+    // },
   },
 });

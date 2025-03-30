@@ -25,8 +25,8 @@ module.exports = merge(common, {
     hot: true,
     // open: true, // 自动打开浏览器
     historyApiFallback: true, // 支持 history 模式的路由，解决刷新页面 404 的问题
-    // devMiddleware: {
-    //   writeToDisk: true, // 允许写入到磁盘
-    // },
+    devMiddleware: {
+      writeToDisk: true, // 允许写入到磁盘
+    },
   },
 });

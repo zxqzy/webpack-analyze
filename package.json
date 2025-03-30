@@ -2,9 +2,9 @@
   "name": "webpack-analyze",
   "version": "1.0.0",
   "license": "MIT",
-  "sideEffects": false,
+  "sideEffects": ["src/styles/index.css"],
   "scripts": {
-    "dev": "npx webpack server --config build/webpack.dev.js",
+    "dev": "npx webpack  --config build/webpack.dev.js",
     "build": "npx webpack --config build/webpack.prod.js"
   },
   "devDependencies": {
@@ -12,9 +12,11 @@
     "@babel/preset-env": "^7.26.9",
     "babel-loader": "^10.0.0",
     "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^7.1.2",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.6.3",
     "image-webpack-loader": "^8.1.0",
+    "style-loader": "^4.0.0",
     "terser": "^5.39.0",
     "url-loader": "^4.1.1",
     "webpack": "^5.98.0",

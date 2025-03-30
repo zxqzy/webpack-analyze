@@ -30,6 +30,14 @@ module.exports = {
         },
       },
       {
+        test: /\.css$/,
+        use: [
+          "style-loader", // 将 CSS 插入到 DOM 中
+          "css-loader", // 解析 CSS 文件
+          // "postcss-loader", // 添加浏览器前缀
+        ],
+      },
+      {
         test: /\.(png|jpe?g|gif|svg|webp)$/,
        use: [
           {

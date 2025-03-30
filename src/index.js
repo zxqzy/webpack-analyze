@@ -8,6 +8,7 @@ import testImage from "@/assets/images/1.webp";
 const root = document.getElementById("root");
 // const fragment = document.createDocumentFragment();
 const ul = document.createElement("ul");
+ul.classList.add("route-list");
 const textItems = [
   {
     text: "查看加载按钮效果",

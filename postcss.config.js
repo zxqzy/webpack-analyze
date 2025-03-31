@@ -1,4 +1,4 @@
-module.exports = {
+module.exports = ({env}) => ({
     plugins: [
         require("postcss-preset-env")({
         stage: 0, // Use the latest CSS features, 0-4, 0 is the latest
@@ -6,6 +6,6 @@ module.exports = {
             "nesting-rules": true,
         },
         }),
-        process.env.NODE_ENV === "production" ? require("cssnano") : false, 
+        env === "production" ? require("cssnano") : false, 
     ].filter(Boolean),
-}
+})

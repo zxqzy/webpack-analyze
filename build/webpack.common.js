@@ -33,7 +33,14 @@ module.exports = {
         test: /\.css$/,
         use: [
           "style-loader", // 将 CSS 插入到 DOM 中
-          "css-loader", // 解析 CSS 文件
+          {
+            loader: "css-loader",
+            options: {
+              modules: {
+                localIdentName: "[name]__[local]--[hash:base64:5]", // CSS 模块化，生成唯一的类名
+              },
+            },
+          },
           "postcss-loader", // 处理 CSS 前缀
           // {
           //   loader: "postcss-loader",
@@ -102,7 +109,7 @@ module.exports = {
     }),
   ],
   resolve: {
-    extensions: [".js", ".json"],
+    extensions: [".js", ".json"], // 解析文件的后缀名
     alias: {
       "@": path.resolve(__dirname, "../src"),
     },

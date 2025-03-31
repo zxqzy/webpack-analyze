@@ -1,11 +1,13 @@
 // import { add } from "lodash";
 // import { add } from "lodash-es"
+// import styles from "./index.module.css";
 import { add } from "@/utils";
 export const renderAddButton = () => {
-  require("./index.css");
+  const styles = require("./index.module.css");
   const element = document.createElement("button");
   let count = 0;
   element.innerHTML = `Click me!: ${count}`;
+  element.className = styles.button;
   element.addEventListener("click", () => {
     count = add(count, 2);
     element.innerHTML = `Click me!: ${count}`;

@@ -41,6 +41,7 @@ ul.addEventListener("click", (e) => {
       if (root.lastChild.tagName === "DIV") {
         root.removeChild(root.lastChild);
       }
+      // require('@/styles/index.css');
       root.appendChild(element);
     });
   }

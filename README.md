@@ -23,3 +23,19 @@
         - asset/resource: file-loader
         - asset/inline: 把资源转成 base64 路径
         - asset: 大文件 file-loader, 小文件可以转 base-64
+11. 给 css 加前缀，或者使用新的 css 新的语法可以使用 postcss，需要用到一系列相关的包：
+    - postcss-loader: webpack 集成 postcss 的方式
+    - postcss: 核心库，提供 CSS 解析和处理的底层能力，css 会被转换成 AST,然后通过插件机制对 AST 进行修改，最后转换成 CSS 代码
+    - autoprefixer: postcss 插件，通过 browserslist 配置，给浏览器加前缀
+    - postcss-preset-env: postcss 插件集合，默认包含 autoprefixer, 可以将新语法转换成兼容性更好的 CSS, 比如嵌套语法，目标是向前兼容
+    - cssnano: 压缩和优化 CSS 代码，用于生产环境：
+        - 删除注释、空白
+        - 合并重复的 CSS 规则
+        - 缩短颜色值
+    - postcss-modules: postcss 支持模块化的插件，转换类名，防止全局污染，但一般直接使用 css-loader 支持的 modules, 除非项目与 postcss 深度集成
+12. 验证 postcss 是否正确配置的方式
+    - 检查配置，新版浏览器已经支持，不会添加前缀，可以使用在线工具：https://autoprefixer.github.io/ 验证
+    - npx browserlist 可以检查配置的浏览器包含哪些
+    - 看打包后的文件是否包含 -webkit- ，或者 -moz- 等前缀
+    - 确定构建结果是最新的，缓存清理等
+13. 代码构建过程中的代码不一定都打包到最终的 js 文件，只是跟运行时打包的文件才会打包，比如 css-loader, style-loader

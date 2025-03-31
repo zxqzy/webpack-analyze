@@ -6,5 +6,6 @@ module.exports = {
             "nesting-rules": true,
         },
         }),
-    ],
+        process.env.NODE_ENV === "production" ? require("cssnano") : false, 
+    ].filter(Boolean),
 }

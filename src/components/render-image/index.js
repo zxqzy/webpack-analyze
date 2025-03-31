@@ -1,5 +1,5 @@
 export const renderImage = (image) => {
-  import("./index.css");
+  require("./index.css");
   const imageElement = document.createElement("img");
   imageElement.src = image;
   return imageElement;

@@ -1,9 +1,8 @@
 // import { add } from "lodash";
-// import { add } from "lodash-es"
-// import styles from "./index.module.css";
+// import { add } from "lodash-es";
 import { add } from "@/utils";
 export const renderAddButton = () => {
-  const styles = require("./index.module.scss");
+  const styles = require("./index.scss");
   const element = document.createElement("button");
   let count = 0;
   element.innerHTML = `Click me!: ${count}`;

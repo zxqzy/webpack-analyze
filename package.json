@@ -6,7 +6,7 @@
     "*.css"
   ],
   "scripts": {
-    "dev": "npx webpack --config build/webpack.dev.js",
+    "dev": "npx webpack server --config build/webpack.dev.js",
     "build": "npx webpack --config build/webpack.prod.js"
   },
   "devDependencies": {

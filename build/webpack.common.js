@@ -30,7 +30,7 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/,
+        test: /\.module\.css$/,
         use: [
           "style-loader", // 将 CSS 插入到 DOM 中
           {
@@ -61,6 +61,15 @@ module.exports = {
           //     },
           //   },
           // },
+        ],
+      },
+      {
+        test: /.css$/,
+        exclude: /\.module\.css$/, // 排除模块化的 CSS 文件
+        use: [
+          "style-loader",
+          "css-loader",
+          "postcss-loader",
         ],
       },
       {

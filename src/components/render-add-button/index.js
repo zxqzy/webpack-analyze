@@ -3,7 +3,7 @@
 // import styles from "./index.module.css";
 import { add } from "@/utils";
 export const renderAddButton = () => {
-  const styles = require("./index.module.css");
+  const styles = require("./index.module.scss");
   const element = document.createElement("button");
   let count = 0;
   element.innerHTML = `Click me!: ${count}`;

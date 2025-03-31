@@ -31,7 +31,7 @@ module.exports = {
         },
       },
       {
-        test: /\.module\.css$/,
+        test: /\.scss$/,
         use: [
           // "style-loader", // 将 CSS 插入到 DOM 中
           MiniCssExtractPlugin.loader, // 将 CSS 提取到单独的文件中
@@ -63,11 +63,11 @@ module.exports = {
           //     },
           //   },
           // },
+          "sass-loader",
         ],
       },
       {
         test: /.css$/,
-        exclude: /\.module\.css$/, // 排除模块化的 CSS 文件
         use: [
           "style-loader",
           "css-loader",

@@ -1,7 +1,7 @@
-export const add = (a, b) => a + b + 5;
-export const subtract = (a, b) => a - b;
+export const add = (a, b) => a + b + 5
+export const subtract = (a, b) => a - b
 
-window.subtract = subtract;
+window.subtract = subtract
 console.log(subtract(3, 2))
 
-export default { add, subtract };
+export default { add, subtract }

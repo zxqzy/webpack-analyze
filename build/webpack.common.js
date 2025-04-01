@@ -1,22 +1,22 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const BundleAnalyzerPlugin =
-  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { chunk } = require("lodash");
+  require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const { chunk } = require('lodash')
 // const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
-  entry: path.resolve(__dirname, "../src/index.js"),
+  entry: path.resolve(__dirname, '../src/index.js'),
   output: {
     // dirname 是当前文件所在目录的路径
-    path: path.resolve(__dirname, "../dist"),
-    filename: "[name].[contenthash].bundle.js",
-    chunkFilename: "[name].[contenthash:8].chunk.js",
+    path: path.resolve(__dirname, '../dist'),
+    filename: '[name].[contenthash].bundle.js',
+    chunkFilename: '[name].[contenthash:8].chunk.js',
     clean: true, // 清空上次打包的文件
   },
   cache: {
-    type: "filesystem", // 使用文件缓存，提升打包速度
+    type: 'filesystem', // 使用文件缓存，提升打包速度
     buildDependencies: {
       config: [__filename], // 监控当前配置文件的变化
     },
@@ -29,16 +29,17 @@ module.exports = {
         use: [
           // 'thread-loader', // 多线程打包，提升打包速度
           {
-          loader: "babel-loader",
-          options: {
-            presets: [
-              [
-                "@babel/preset-env",
-                // { modules: false }, // 不转换 ES6 模块为 CommonJS 模块，保留 ES6 模块语法，方便 tree-shaking(默认值为 false)
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                [
+                  '@babel/preset-env',
+                  // { modules: false }, // 不转换 ES6 模块为 CommonJS 模块，保留 ES6 模块语法，方便 tree-shaking(默认值为 false)
+                ],
               ],
-            ],
+            },
           },
-        }],
+        ],
       },
       {
         test: /\.scss$/,
@@ -46,14 +47,14 @@ module.exports = {
           // "style-loader", // 将 CSS 插入到 DOM 中
           MiniCssExtractPlugin.loader, // 将 CSS 提取到单独的文件中
           {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: {
               modules: {
-                localIdentName: "[name]__[local]--[hash:base64:5]", // CSS 模块化，生成唯一的类名
+                localIdentName: '[name]__[local]--[hash:base64:5]', // CSS 模块化，生成唯一的类名
               },
             },
           },
-          "postcss-loader", // 处理 CSS 前缀
+          'postcss-loader', // 处理 CSS 前缀
           // {
           //   loader: "postcss-loader",
           //   options: {
@@ -73,26 +74,22 @@ module.exports = {
           //     },
           //   },
           // },
-          "sass-loader",
+          'sass-loader',
         ],
       },
       {
         test: /\.css$/,
-        use: [
-          "style-loader",
-          "css-loader",
-          "postcss-loader",
-        ],
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
       {
         test: /\.(png|jpe?g|gif|svg|webp)$/,
-       use: [
+        use: [
           {
-            loader: "url-loader",
+            loader: 'url-loader',
             options: {
               limit: 8 * 1024, // 小于 8kb 的图片转为 base64 格式，大于 8kb 的图片使用 file-loader 转为文件格式
-              name: "[name].[hash:8][ext]", // 图片输出路径
-              outputPath: "assets/images", // 图片输出路径
+              name: '[name].[hash:8][ext]', // 图片输出路径
+              outputPath: 'assets/images', // 图片输出路径
               // esModule: false, // 使用 CommonJS 模块语法，解决图片路径问题
             },
           },
@@ -121,22 +118,22 @@ module.exports = {
     // new CleanWebpackPlugin(), // 清除上次打包的文件
     // 生成 index.html 文件
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "../public/index.html"),
+      template: path.resolve(__dirname, '../public/index.html'),
     }),
     new MiniCssExtractPlugin({
-      filename: "assets/styles/[name].[contenthash:8].css", // 提取后的 CSS 文件名
-      chunkFilename: "assets/styles/[name].[contenthash:8].chunk.css", // 提取后的 CSS 文件名
+      filename: 'assets/styles/[name].[contenthash:8].css', // 提取后的 CSS 文件名
+      chunkFilename: 'assets/styles/[name].[contenthash:8].chunk.css', // 提取后的 CSS 文件名
     }),
     // 打包分析
     new BundleAnalyzerPlugin({
-      analyzerMode: "server",
+      analyzerMode: 'server',
       openAnalyzer: false,
     }),
   ],
   resolve: {
-    extensions: [".js", ".json"], // 解析文件的后缀名
+    extensions: ['.js', '.json'], // 解析文件的后缀名
     alias: {
-      "@": path.resolve(__dirname, "../src"),
+      '@': path.resolve(__dirname, '../src'),
     },
   },
   // optimization: {
@@ -150,4 +147,4 @@ module.exports = {
   //       automaticNameDelimiter: "~", // 自动命名分隔符，默认是 ~
   //     },
   //   }
-};
+}

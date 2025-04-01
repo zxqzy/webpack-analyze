@@ -60,4 +60,11 @@
     - 模块依赖图
     - 模块转译结果（如 Babel 输出）
     - 文件解析结果（如 node_modules 解析路径）
-    
+22. Legacy Config VS Flat Config
+    - 配置文件：.eslintrc.js/.eslintrc.json VS eslint.config.js（必须为 ESM 格式）
+    - 配置结构：嵌套的 JSON 对象 VS 扁平化数组（每个元素为独立配置对象）
+    - 配置继承：通过 extends 数组集成 VS 通过数组顺序合并配置（后面的覆盖前面的）
+    - 插件加载：通过 Plugins 字段声明字符串 VS 需显示导入插件对象并注入 plugins 字段
+    - 解析器配置：通过 parser 字段指定 VS 在 language.parser 中指定解析器对象
+    - 文件匹配：全局配置+overrides针对特定文件 VS 每个配置对象通过 files 字段限定作用域范围
+    - 默认忽略文件：通过 .eslintignore 或 ignorePatters 配置 VS 默认忽略 node_modules 等目录，可通过 ignores 单独配置

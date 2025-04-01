@@ -52,3 +52,7 @@
     - async: chunks 异步加载的文件
     - initial: chunks 初始加载的文件，即入口文件
 19. splitChunks 中的 cacheGroup 主要用于定义缓存组，一般针对 node_modules 中的文件，因为一般不会更改
+20. thread-loader: 多线程加速
+    - 将后续的任务放在独立的 Worker 线程池
+    - 依赖前后顺序的 loader 不适用
+    - 注意 thread-loader 不一定能够能够提升速度，适用于大型项目

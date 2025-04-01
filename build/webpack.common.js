@@ -19,8 +19,10 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        // exclude: /node_modules/, // 排除 node_modules 目录下的文件
-        use: {
+        exclude: /node_modules/, // 排除 node_modules 目录下的文件
+        use: [
+          // 'thread-loader', // 多线程打包，提升打包速度
+          {
           loader: "babel-loader",
           options: {
             presets: [
@@ -30,7 +32,7 @@ module.exports = {
               ],
             ],
           },
-        },
+        }],
       },
       {
         test: /\.scss$/,

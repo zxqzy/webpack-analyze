@@ -15,6 +15,12 @@ module.exports = {
     chunkFilename: "[name].[contenthash:8].chunk.js",
     clean: true, // 清空上次打包的文件
   },
+  cache: {
+    type: "filesystem", // 使用文件缓存，提升打包速度
+    buildDependencies: {
+      config: [__filename], // 监控当前配置文件的变化
+    },
+  },
   module: {
     rules: [
       {

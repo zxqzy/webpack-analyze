@@ -43,3 +43,12 @@
     - 标签选择器不改动，只是类名转换
 15. html-webpack-plugin 只是在编译阶段起作用，仅负责入口文件与静态资源的关联，而懒加载的静态资源由 webpack 的运行时代码处理，比如创建 link、script 标签等
 16. 直接全局访问环境变量（process.env.NODE_ENV）可能不生效，可以通过函数参数或者在全局注册的方式解决
+17. chunks 是 webpack 将模块打包后生成的代码块，有四种类型
+    - Initial Chunk: 通过 entry 配置直接生成，可配置多个
+    - Async Chunjk： 通过import()动态加载生成
+    - Runtime Chunk: 提取 Webpack 运行时代码
+    - Vendor Chunk: 分离 node_modules 模块
+18. 如果没有大小限制，chunks 设置为 all，webpack 会 split 如果的文件，chunks 还有两样值：
+    - async: chunks 异步加载的文件
+    - initial: chunks 初始加载的文件，即入口文件
+19. splitChunks 中的 cacheGroup 主要用于定义缓存组，一般针对 node_modules 中的文件，因为一般不会更改

@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const BundleAnalyzerPlugin =
   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { chunk } = require("lodash");
 // const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
@@ -11,6 +12,7 @@ module.exports = {
     // dirname 是当前文件所在目录的路径
     path: path.resolve(__dirname, "../dist"),
     filename: "[name].[contenthash].bundle.js",
+    chunkFilename: "[name].[contenthash:8].chunk.js",
     clean: true, // 清空上次打包的文件
   },
   module: {
@@ -129,4 +131,15 @@ module.exports = {
       "@": path.resolve(__dirname, "../src"),
     },
   },
+  // optimization: {
+  //     splitChunks: {
+  //       chunks: "all", // 将所有的 chunk 都进行分离
+  //       minSize: 0, // 最小尺寸，默认是 30kb
+  //       maxSize: 0, // 最大尺寸，默认是 0，表示不限制
+  //       minChunks: 1, // 最小 chunk 数量，默认是 1
+  //       maxAsyncRequests: 30, // 最大异步请求数量，默认是 30
+  //       maxInitialRequests: 30, // 最大初始请求数量，默认是 30
+  //       automaticNameDelimiter: "~", // 自动命名分隔符，默认是 ~
+  //     },
+  //   }
 };

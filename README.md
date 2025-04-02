@@ -68,3 +68,7 @@
     - 解析器配置：通过 parser 字段指定 VS 在 language.parser 中指定解析器对象
     - 文件匹配：全局配置+overrides针对特定文件 VS 每个配置对象通过 files 字段限定作用域范围
     - 默认忽略文件：通过 .eslintignore 或 ignorePatters 配置 VS 默认忽略 node_modules 等目录，可通过 ignores 单独配置
+23. prepare 会在 npm install 或者 yarn install 后自动执行
+24. Husky 利用了 git hooks 实现了对 git 操作的拦截，让开发者可以实现自动化操作
+25. husky install: 将项目中的 .husky 目录下的钩子脚本链接到 Git 的钩子目录（.git/hooks），使 Git 能识别这些自定义钩子，如果不链接钩子的话，自定义的钩子不会起作用
+26. lint-staged 让开发者可以仅仅处理暂存区的文件，避免污染历史，也可以可以对不同格式的文件运行不同的命令

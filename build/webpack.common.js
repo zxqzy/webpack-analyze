@@ -3,7 +3,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const BundleAnalyzerPlugin =
   require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const { chunk } = require('lodash')
 // const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {

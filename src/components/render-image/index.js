@@ -1,11 +1,8 @@
-import { add } from '@/utils'
-
 export const renderImage = image => {
+  // 不会动态分割
   require('./index.css')
   const imageElement = document.createElement('img')
   imageElement.src = image
-  // 测试cacheGroup
-  add(3, 2)
   return imageElement
 }
 

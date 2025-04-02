@@ -1,10 +1,20 @@
 const common = require('./webpack.common')
 const { merge } = require('webpack-merge')
+const TerserPlugin = require('terser-webpack-plugin')
 
 module.exports = () =>
   merge(common, {
     mode: 'production',
     optimization: {
+      minimizer: [new TerserPlugin({ // 配置更灵活，精确控制代码的压缩和优化
+      terserOptions: {
+        compress: {
+          unused: true, // 删除未使用的代码，显示配置也不一定有用，热更新的原因，只可能删除部分;生成的代码业余 devtool 的配置有关
+        },
+        mangle: true,
+      },
+      extractComments: false, // 是否提取版权信息
+    })],
       runtimeChunk: 'single', // 将运行时代码提取到单独的文件中，默认是 false
       splitChunks: {
         // chunks: "all", // 将所有的 chunk 都进行分离
